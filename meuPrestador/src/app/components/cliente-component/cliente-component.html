@@ -1,0 +1,63 @@
+<div class="container">
+
+    <h2>Cadastro de Cliente</h2>
+
+    <form #clienteForm="ngForm" (ngSubmit)="salvar()">
+
+        <div class="form-group">
+            <label>Nome</label>
+            <input type="text" name="nome" [(ngModel)]="cliente.nome" required class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" [(ngModel)]="cliente.email" required class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Telefone</label>
+            <input type="text" name="telefone" [(ngModel)]="cliente.telefone" required class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Endereço</label>
+            <textarea name="endereco" [(ngModel)]="cliente.endereco" class="form-control">
+    </textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Salvar
+        </button>
+
+    </form>
+
+    <hr>
+
+    <h2>Lista de Clientes</h2>
+
+    <table class="table table-striped" *ngIf="lista_de_clientes.length > 0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Endereço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cliente of lista_de_clientes">
+                <td>{{ cliente.id }}</td>
+                <td>{{ cliente.nome }}</td>
+                <td>{{ cliente.email }}</td>
+                <td>{{ cliente.telefone }}</td>
+                <td>{{ cliente.endereco }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p *ngIf="lista_de_clientes.length === 0">
+        Nenhum cliente cadastrado.
+    </p>
+
+</div>

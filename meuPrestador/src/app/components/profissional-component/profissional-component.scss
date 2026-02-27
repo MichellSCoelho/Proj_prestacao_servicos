@@ -1,0 +1,124 @@
+/* Fundo geral */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fdfcff;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(180, 170, 200, 0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Títulos */
+h2 {
+    color: #7a6c9d;
+    margin-bottom: 15px;
+    border-left: 5px solid #cdb4db;
+    padding-left: 10px;
+}
+
+/* Separador */
+hr {
+    margin: 30px 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+}
+
+/* Formulário */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: 600;
+    color: #6d6875;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #e0d4f7;
+    background-color: #faf7ff;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #b8c0ff;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(184, 192, 255, 0.2);
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+    transform: scale(1.2);
+    accent-color: #a0e7e5;
+}
+
+/* Botão */
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    background: linear-gradient(135deg, #cdb4db, #b5ead7);
+    color: #4a4a4a;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(181, 234, 215, 0.4);
+}
+
+/* Tabela */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(200, 200, 230, 0.2);
+}
+
+.table thead {
+    background-color: #dfe7fd;
+}
+
+.table th {
+    padding: 12px;
+    text-align: left;
+    color: #5c5470;
+    font-weight: 600;
+}
+
+.table td {
+    padding: 12px;
+    border-top: 1px solid #f0e9ff;
+    color: #6b6b6b;
+}
+
+.table tbody tr:hover {
+    background-color: #f6f1ff;
+    transition: 0.2s;
+}
+
+/* Mensagem vazia */
+p {
+    color: #9a8c98;
+    font-style: italic;
+    margin-top: 10px;
+}
