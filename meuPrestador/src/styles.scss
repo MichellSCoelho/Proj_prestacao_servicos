@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fce7f3, #e0f2fe);
+}
+
+.navbar {
+    background: #ffffffcc;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

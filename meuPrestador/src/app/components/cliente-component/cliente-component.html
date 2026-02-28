@@ -32,32 +32,87 @@
     </form>
 
     <hr> -->
-<h2>Lista de Clientes</h2>
+<div class="cliente-container">
 
-@if (lista_de_clientes$ | async; as lista_de_clientes) {
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Telefone</th>
-            <th>Endereço</th>
-        </tr>
-    </thead>
+    <!-- ========================= -->
+    <!-- CARD CADASTRO -->
+    <!-- ========================= -->
 
-    <tbody>
-        @for (cliente of lista_de_clientes; track cliente.id){
-        <tr>
-            <td>{{ cliente.id }}</td>
-            <td>{{ cliente.nome }}</td>
-            <td>{{ cliente.email }}</td>
-            <td>{{ cliente.telefone }}</td>
-            <td>{{ cliente.endereco }}</td>
-        </tr>
+    <div class="card-box">
+
+        <h2>Cadastro de Cliente</h2>
+
+        <form #clienteForm="ngForm" (ngSubmit)="salvar()">
+
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" name="nome" [(ngModel)]="cliente.nome" required class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" [(ngModel)]="cliente.email" required class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Telefone</label>
+                <input type="text" name="telefone" [(ngModel)]="cliente.telefone" required class="form-control" />
+            </div>
+
+            <button type="submit" class="btn-primary" [disabled]="clienteForm.invalid">
+                Salvar
+            </button>
+
+            <!-- 🔥 BOTÃO VOLTAR AJUSTADO -->
+            <button type="button" (click)="voltarHome()" class="btn-secondary">
+                ← Voltar para Home
+            </button>
+
+        </form>
+
+        <!-- ✅ Mensagem de sucesso -->
+        <div *ngIf="mensagemSucesso" class="success-msg">
+            {{ mensagemSucesso }}
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- CARD LISTA -->
+    <!-- ========================= -->
+
+    <div class="card-box">
+
+        <h2>Lista de Clientes</h2>
+
+        @if (lista_de_clientes$ | async; as lista_de_clientes) {
+
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (c of lista_de_clientes; track c.id) {
+                <tr>
+                    <td>{{ c.id }}</td>
+                    <td>{{ c.nome }}</td>
+                    <td>{{ c.email }}</td>
+                    <td>{{ c.telefone }}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+        } @else {
+        <p>Carregando...</p>
         }
-    </tbody>
-</table>
-} @else {
-<p>Carregando...</p>
-}
+
+    </div>
+
+</div>

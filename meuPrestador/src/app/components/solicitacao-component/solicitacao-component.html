@@ -13,31 +13,33 @@
             <select id="servico" class="form-control" name="servico" required [(ngModel)]="novaSolicitacao.servico"
                 (change)="onSelecionarServico(novaSolicitacao.servico!)">
 
+                @if (lista_de_servicos$ | async; as lista_servicos){
+                @for (s of lista_servicos; track s.id){
+                <option [ngValue]="s.id">{{ s.nome }}</option>
+                }
+                } @else {
                 <option [ngValue]="null">Selecione...</option>
-
-                <option *ngFor="let s of lista_de_servicos" [ngValue]="s.id">
-                    {{ s.nome }}
-                </option>
-
+                }
             </select>
         </div>
 
         <!-- ========================= -->
         <!-- SELEÇÃO DE PROFISSIONAL -->
         <!-- ========================= -->
-        <div class="form-group mb-3" *ngIf="lista_de_profissionais.length > 0">
+        <div class="form-group mb-3">
 
             <label for="profissional">Selecione o Profissional</label>
 
             <select id="profissional" class="form-control" name="profissional" required
                 [(ngModel)]="novaSolicitacao.profissional">
 
+                @if (lista_de_profissionais$ | async; as lista_profissionais){
+                @for (p of lista_profissionais; track p.id){
+                <option [ngValue]="p.id">{{ p.nome }}</option>
+                }
+                } @else {
                 <option [ngValue]="null">Selecione...</option>
-
-                <option *ngFor="let p of lista_de_profissionais" [ngValue]="p.id">
-                    {{ p.nome }}
-                </option>
-
+                }
             </select>
         </div>
 
