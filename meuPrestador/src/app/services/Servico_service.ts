@@ -11,12 +11,12 @@ export class ServicoService {
     urlbase: string = 'http://localhost:8000';
 
     getServico_service(): Observable<Servico[]> {
-        return this.http.get<Servico[]>(`${this.urlbase}/Servico/`);
+        return this.http.get<Servico[]>(`${this.urlbase}/servicos/`);
     }
     saveServico(servico_service: Servico) {
-        return this.http.post(`${this.urlbase}/Servico/`, servico_service);
+        return this.http.post(`${this.urlbase}/servicos/`, servico_service);
     }
     deleteServico(Servico_id: number) {
-        return this.http.delete(`${this.urlbase}/Servico/${ServicoService}/`);
+        return this.http.delete(`${this.urlbase}/servicos/${ServicoService}/`);
     }
 }  

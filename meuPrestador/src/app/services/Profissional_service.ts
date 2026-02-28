@@ -12,13 +12,13 @@ export class Profissional_service {
 
     getProfissionaisPorServico(servico_id: number) {
         return this.http.get<Profissional[]>(
-            `${this.urlbase}/Profissional/?servicos=${servico_id}`
+            `${this.urlbase}/profissionais/?servico_id=${servico_id}`
         );
     }
     saveProfissional(profissional_service: Profissional) {
-        return this.http.post(`${this.urlbase}/Profissional/`, profissional_service);
+        return this.http.post(`${this.urlbase}/profissionais/`, profissional_service);
     }
     deleteProfissional(Profissiona_id: number) {
-        return this.http.delete(`${this.urlbase}/Profissional/${Profissional_service}/`);
+        return this.http.delete(`${this.urlbase}/profissionais/${Profissional_service}/`);
     }
 }  

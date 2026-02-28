@@ -51,6 +51,14 @@ textarea {
     resize: none;
 }
 
+tr {
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: #f8f9fa !important;
+    }
+}
+
 input:focus,
 textarea:focus {
     outline: none;

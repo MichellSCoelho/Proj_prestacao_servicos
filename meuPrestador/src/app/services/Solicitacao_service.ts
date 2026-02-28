@@ -12,12 +12,12 @@ export class Solicitacao_service {
     urlbase: string = 'http://localhost:8000';
 
     getSolicitacao_service(): Observable<Solicitacao_service[]> {
-        return this.http.get<Solicitacao_service[]>(`${this.urlbase}/Solicitacao/`);
+        return this.http.get<Solicitacao_service[]>(`${this.urlbase}/solicitacoes/`);
     }
     saveSolicitacao(solicitacao_service: Solicitacao) {
-        return this.http.post(`${this.urlbase}/Servico/`, solicitacao_service);
+        return this.http.post(`${this.urlbase}/servicos/`, solicitacao_service);
     }
     deleteSolicitacao(Solicitacao_id: number) {
-        return this.http.delete(`${this.urlbase}/Solicitacao/${Solicitacao_service}/`);
+        return this.http.delete(`${this.urlbase}/solicitacoes/${Solicitacao_service}/`);
     }
 };

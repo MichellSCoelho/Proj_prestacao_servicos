@@ -2,58 +2,70 @@
 
     <h2>Nova Solicitação de Serviço</h2>
 
-    <!-- Seleção de Serviço -->
-    <div class="form-group">
-        <label>Selecione o Serviço</label>
+    <form (ngSubmit)="enviarSolicitacao()" #form="ngForm">
 
-        <select class="form-control" [(ngModel)]="servicoSelecionado" name="servico"
-            (change)="onSelecionarServico(servicoSelecionado)">
-            <option [value]=" " disabled selected>
-                -- Escolha um serviço --
-            </option>
+        <!-- ========================= -->
+        <!-- SELEÇÃO DE SERVIÇO -->
+        <!-- ========================= -->
+        <div class="form-group mb-3">
+            <label for="servico">Selecione o Serviço</label>
 
-            <option *ngFor="let servico of lista_de_servicos" [value]="servico.id">
-                {{ servico.nome }} - R$ {{ servico.valor_base }}
-            </option>
+            <select id="servico" class="form-control" name="servico" required [(ngModel)]="novaSolicitacao.servico"
+                (change)="onSelecionarServico(novaSolicitacao.servico!)">
 
-        </select>
-    </div>
+                <option [ngValue]="null">Selecione...</option>
 
-    <hr>
+                <option *ngFor="let s of lista_de_servicos" [ngValue]="s.id">
+                    {{ s.nome }}
+                </option>
 
-    <!-- Lista de Profissionais -->
-    <h2 *ngIf="lista_de_profissionais.length > 0">
-        Profissionais Disponíveis
-    </h2>
+            </select>
+        </div>
 
-    <table class="table table-striped" *ngIf="lista_de_profissionais.length > 0">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>Selecionar</th>
-            </tr>
-        </thead>
+        <!-- ========================= -->
+        <!-- SELEÇÃO DE PROFISSIONAL -->
+        <!-- ========================= -->
+        <div class="form-group mb-3" *ngIf="lista_de_profissionais.length > 0">
 
-        <tbody>
-            <tr *ngFor="let profissional of lista_de_profissionais">
-                <td>{{ profissional.id }}</td>
-                <td>{{ profissional.nome }}</td>
-                <td>{{ profissional.email }}</td>
-                <td>{{ profissional.telefone }}</td>
-                <td>
-                    <button class="btn btn-primary">
-                        Escolher
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+            <label for="profissional">Selecione o Profissional</label>
 
-    <p *ngIf="servicoSelecionado && lista_de_profissionais.length === 0">
-        Nenhum profissional disponível para este serviço.
-    </p>
+            <select id="profissional" class="form-control" name="profissional" required
+                [(ngModel)]="novaSolicitacao.profissional">
+
+                <option [ngValue]="null">Selecione...</option>
+
+                <option *ngFor="let p of lista_de_profissionais" [ngValue]="p.id">
+                    {{ p.nome }}
+                </option>
+
+            </select>
+        </div>
+
+        <!-- ========================= -->
+        <!-- STATUS -->
+        <!-- ========================= -->
+        <div class="form-group mb-3">
+            <label for="status">Status</label>
+
+            <select id="status" class="form-control" name="status" [(ngModel)]="novaSolicitacao.status">
+
+                <option value="Pendente">Pendente</option>
+                <option value="Em andamento">Em andamento</option>
+                <option value="Finalizado">Finalizado</option>
+                <option value="Cancelado">Cancelado</option>
+
+            </select>
+        </div>
+
+        <!-- ========================= -->
+        <!-- BOTÃO -->
+        <!-- ========================= -->
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+
+            Enviar Solicitação
+
+        </button>
+
+    </form>
 
 </div>

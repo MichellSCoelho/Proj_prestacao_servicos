@@ -15,14 +15,14 @@ import { FormsModule } from '@angular/forms';
 export class ClienteComponent {
   private clienteService: ClienteService = inject(ClienteService);
 
-  lista_de_clientes: ClienteInterface[] = [];
+  lista_de_clientes$!: Observable<ClienteInterface[]>;
 
   ngOnInit() {
     this.listar();
   }
 
   listar() {
-    this.clienteService.getCliente_service().subscribe(res => this.lista_de_clientes = res);
+    this.lista_de_clientes$ = this.clienteService.getCliente_service();
   }
   cliente: ClienteInterface = {} as ClienteInterface;
 

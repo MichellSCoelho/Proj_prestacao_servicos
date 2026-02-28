@@ -5,9 +5,9 @@ import { ProfissionalComponent } from './components/profissional-component/profi
 import { SolicitacaoComponent } from './components/solicitacao-component/solicitacao-component';
 
 export const routes: Routes = [
-    { path: '', component: ServicoComponent },
-    { path: 'profissional', component: ProfissionalComponent },
+    { path: 'servico', component: ServicoComponent },
+    { path: 'profissional/:id', component: ProfissionalComponent },
     { path: 'solicitacao', component: SolicitacaoComponent },
     { path: 'cliente', component: ClienteComponent },
-    { path: '**', redirectTo: '' }
+    { path: '**', redirectTo: 'servico' }
 ];

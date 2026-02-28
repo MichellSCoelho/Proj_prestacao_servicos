@@ -1,5 +1,34 @@
 <div class="container">
 
+    <h2>Lista de Serviços</h2>
+
+    @if (lista_de_servicos$ | async; as lista_de_servicos) {
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Valor Base</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (s of lista_de_servicos; track s.id) {
+            <tr [routerLink]="['/profissional', s.id]" style="cursor: pointer;">
+                <td>{{ s.id }}</td>
+                <td>{{ s.nome }}</td>
+                <td>{{ s.descricao }}</td>
+                <td>R$ {{ s.valor_base }}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    } @else {
+    <p>Carregando...</p>
+    }
+
+    <hr>
+
     <h2>Cadastro de Serviço</h2>
 
     <form #servicoForm="ngForm" (ngSubmit)="salvar()">
@@ -12,7 +41,7 @@
         <div class="form-group">
             <label>Descrição</label>
             <textarea name="descricao" [(ngModel)]="servico.descricao" required class="form-control">
-    </textarea>
+            </textarea>
         </div>
 
         <div class="form-group">
@@ -25,32 +54,4 @@
         </button>
 
     </form>
-
-    <hr>
-
-    <h2>Lista de Serviços</h2>
-
-    <table class="table table-striped" *ngIf="lista_de_servicos.length > 0">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Valor Base</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let servico of lista_de_servicos">
-                <td>{{ servico.id }}</td>
-                <td>{{ servico.nome }}</td>
-                <td>{{ servico.descricao }}</td>
-                <td>R$ {{ servico.valor_base }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <p *ngIf="lista_de_servicos.length === 0">
-        Nenhum serviço cadastrado.
-    </p>
-
 </div>

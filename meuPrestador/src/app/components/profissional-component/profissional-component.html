@@ -1,77 +1,38 @@
-<div class="container">
+@if (lista_de_profissional$ | async; as lista_de_profissionais) {
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Especialidade</th>
+            <th>Status</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
 
-    <h2>Cadastro de Profissional</h2>
-
-    <form #profForm="ngForm" (ngSubmit)="salvar()">
-
-        <div class="form-group">
-            <label>Nome</label>
-            <input type="text" name="nome" [(ngModel)]="profissional.nome" required class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label>Email</label>
-            <input type="email" name="email" [(ngModel)]="profissional.email" required class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label>Telefone</label>
-            <input type="text" name="telefone" [(ngModel)]="profissional.telefone" required class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label>Ativo</label>
-            <input type="checkbox" name="ativo" [(ngModel)]="profissional.ativo" />
-        </div>
-
-        <button type="submit" class="btn btn-primary">
-            Salvar
-        </button>
-
-    </form>
-
-    <hr>
-
-    <h2>Filtrar por Serviço</h2>
-
-<select class="form-control" [(ngModel)]="servico_id" name="servicoFiltro" (change)="filtrarPorServico()">
-    <option value="" disabled selected>
-        -- Escolha um serviço --
-    </option>
-
-    <option *ngFor="let servico of lista_de_servicos" [value]="servico.id">
-        {{ servico.nome }}
-    </option>
-
-</select>
-
-    <hr>
-
-    <h2>Lista de Profissionais</h2>
-
-    <table class="table table-striped" *ngIf="lista_de_profissional.length > 0">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>Ativo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let profissional of lista_de_profissional">
-                <td>{{ profissional.id }}</td>
-                <td>{{ profissional.nome }}</td>
-                <td>{{ profissional.email }}</td>
-                <td>{{ profissional.telefone }}</td>
-                <td>{{ profissional.ativo ? 'Sim' : 'Não' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <p *ngIf="lista_de_profissional.length === 0">
-        Nenhum profissional encontrado.
-    </p>
-
-</div>
+    <tbody>
+        @for (p of lista_de_profissionais; track p.id){
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.nome }}</td>
+            <td>{{ p.email }}</td>
+            <td>{{ p.telefone }}</td>
+            <td>{{ p.especialidade }}</td>
+            <td>
+                @if (p.ativo) {
+                <span class="text-success">Ativo</span>
+                } @else {
+                <span class="text-danger">Inativo</span>
+                }
+            </td>
+            <td>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+} @else {
+<p>Carregando...</p>
+}
