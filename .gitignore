@@ -1,0 +1,24 @@
+# Python / Backend
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Variáveis de ambiente — NUNCA subir!
+.env
+*.env
+.env.*
+
+# Node / Frontend
+node_modules/
+dist/
+build/
+.next/
+
+# Sistema
+.DS_Store
+*.log
+Thumbs.db

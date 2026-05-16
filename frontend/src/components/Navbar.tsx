@@ -13,6 +13,9 @@ export default function Navbar() {
         {isLogado ? (
           <>
             <span style={{ color:'#8A95A8', fontSize:14 }}>Olá, {usuario?.nome}</span>
+            {usuario?.tipo === 'profissional' && (
+              <Link to="/painel" style={{ color:'#FF6B35', textDecoration:'none', fontSize:14, fontWeight:600 }}>📊 Painel</Link>
+            )}
             <button onClick={() => { logout(); navigate('/') }} style={{ background:'#FF6B35', color:'#fff', border:'none', padding:'9px 20px', borderRadius:50, fontSize:14, fontWeight:600, cursor:'pointer' }}>Sair</button>
           </>
         ) : (

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Cadastro from './pages/Cadastro'
+import PainelProfissional from './pages/PainelProfissional'
 import PerfilProfissional from './pages/PerfilProfissional'
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/painel" element={<PainelProfissional />} />
             <Route path="/profissional/:id" element={<PerfilProfissional />} />
           </Routes>
         </div>
